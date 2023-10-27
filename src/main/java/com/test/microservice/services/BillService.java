@@ -3,7 +3,6 @@ package com.test.microservice.services;
 import com.test.microservice.dtos.CreateBillDto;
 import com.test.microservice.dtos.UpdateBillDto;
 import com.test.microservice.models.Bill;
-import com.test.microservice.models.User;
 import com.test.microservice.repositories.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +20,10 @@ public class BillService {
     }
 
     public Bill createBill(CreateBillDto billDto) {
-        User user = new User();
-        user.setId(billDto.getUserId());
-
         Bill bill = new Bill();
         bill.setTotalAmount(billDto.getTotalAmount());
         bill.setDesc(billDto.getDesc());
-        bill.setUser(user);
+        bill.setIdUser(billDto.getIdUser());
 
         return billRepository.save(bill);
     }

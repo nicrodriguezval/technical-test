@@ -1,6 +1,5 @@
 package com.test.microservice.dtos;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +20,6 @@ public class CreateBillDto {
     @Size(max = 255, message = "Description must be less than or equal to 255 characters")
     private String desc;
 
-    @NotNull(message = "userId is required")
-    private Long userId;
+    @NotNull(message = "idUser is required")
+    private Long idUser;
 }
