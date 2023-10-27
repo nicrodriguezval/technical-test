@@ -2,6 +2,8 @@ package com.test.microservice.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "users")
@@ -20,6 +22,12 @@ public class User {
     private String name;
     private Integer age;
     private String email;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL
+    )
+    private List<Bill> bills;
 
     public User() {
     }
