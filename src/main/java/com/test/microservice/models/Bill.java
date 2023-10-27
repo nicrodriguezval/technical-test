@@ -12,15 +12,7 @@ import lombok.*;
 @ToString
 public class Bill {
     @Id
-    @SequenceGenerator(
-            name = "bill_sequence",
-            sequenceName = "bill_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "bill_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private Double totalAmount;
 
@@ -28,10 +20,6 @@ public class Bill {
     @Column(name = "description")
     private String desc;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "id_user", nullable = false,
-            updatable = false
-    )
-    private User user;
+    @Column(name = "id_user")
+    private Long idUser;
 }

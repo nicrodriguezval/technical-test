@@ -3,7 +3,6 @@ package com.test.microservice.controllers;
 import com.test.microservice.dtos.CreateBillDto;
 import com.test.microservice.dtos.UpdateBillDto;
 import com.test.microservice.models.Bill;
-import com.test.microservice.models.User;
 import com.test.microservice.services.BillService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class BillController {
     }
 
     @PostMapping
-    public ResponseEntity<Bill> createBill(@RequestBody @Valid CreateBillDto billDto){
+    public ResponseEntity<Bill> createBill(@RequestBody CreateBillDto billDto){
         Bill createdBill = billService.createBill(billDto);
 
         return new ResponseEntity<>(createdBill, HttpStatus.CREATED);
@@ -50,7 +49,7 @@ public class BillController {
         return new ResponseEntity<>(foundBill.get(), HttpStatus.OK);
     }
 
-    @PatchMapping("{billId}")
+    @PutMapping("{billId}")
     public ResponseEntity<Bill> updateBill(@PathVariable("billId") Long id, @RequestBody @Valid UpdateBillDto billDto) {
         Optional<Bill> updatedBill = billService.updateBill(id, billDto);
 
