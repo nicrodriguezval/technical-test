@@ -25,7 +25,7 @@ public class BillController {
     }
 
     @PostMapping
-    public ResponseEntity<Bill> createBill(@RequestBody CreateBillDto billDto){
+    public ResponseEntity<Bill> createBill(@RequestBody @Valid CreateBillDto billDto){
         Bill createdBill = billService.createBill(billDto);
 
         return new ResponseEntity<>(createdBill, HttpStatus.CREATED);
@@ -38,7 +38,7 @@ public class BillController {
        return new ResponseEntity<>(bills, HttpStatus.OK);
     }
 
-    @GetMapping("{billId}")
+    @GetMapping("/{billId}")
     public ResponseEntity<Bill> getBill(@PathVariable("billId") Long id) {
         Optional<Bill> foundBill = billService.getBill(id);
 
@@ -49,7 +49,7 @@ public class BillController {
         return new ResponseEntity<>(foundBill.get(), HttpStatus.OK);
     }
 
-    @PutMapping("{billId}")
+    @PutMapping("/{billId}")
     public ResponseEntity<Bill> updateBill(@PathVariable("billId") Long id, @RequestBody @Valid UpdateBillDto billDto) {
         Optional<Bill> updatedBill = billService.updateBill(id, billDto);
 
@@ -60,7 +60,7 @@ public class BillController {
         return new ResponseEntity<>(updatedBill.get(), HttpStatus.OK);
     }
 
-    @DeleteMapping("{billId}")
+    @DeleteMapping("/{billId}")
     public ResponseEntity<Bill> deleteBill(@PathVariable("billId") Long id) {
         Optional<Bill> foundBill = billService.getBill(id);
 

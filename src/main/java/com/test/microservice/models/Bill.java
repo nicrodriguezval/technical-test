@@ -1,5 +1,6 @@
 package com.test.microservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,12 @@ public class Bill {
     @Column(name = "description")
     private String desc;
 
-    @Column(name = "id_user")
-    private Long idUser;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(
+            name = "id_user",
+            referencedColumnName = "id",
+            nullable = false
+    )
+    private User user;
 }
