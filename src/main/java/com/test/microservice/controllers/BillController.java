@@ -25,7 +25,7 @@ public class BillController {
     }
 
     @PostMapping
-    public ResponseEntity<Bill> createBill(@RequestBody CreateBillDto billDto){
+    public ResponseEntity<Bill> createBill(@RequestBody @Valid CreateBillDto billDto){
         Bill createdBill = billService.createBill(billDto);
 
         return new ResponseEntity<>(createdBill, HttpStatus.CREATED);
