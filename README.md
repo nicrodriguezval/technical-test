@@ -55,7 +55,7 @@ La API sigue el diseño arquitectónico REST, y para cada uno de los **recursos*
 La estructura del proyecto debe seguir la convención típica de paquetes en Spring:
 
 - `models`: Contiene las entidades `USER` y `BILL`.
-- `repositorys`: Debe contener los métodos de acceso a la capa de persistencia sin utilizar SQL directamente.
+- `repositories`: Debe contener los métodos de acceso a la capa de persistencia sin utilizar SQL directamente.
 - `controllers`: Contiene los endpoints de la API los cuales siguen el diseño arquitectónico REST.
 - `services`: Capa en donde se desarrolla toda la lógica de negocio la cual se conecta el controlador.
 
